@@ -68,7 +68,8 @@ func runHandleTest(t *testing.T, f func(t *testing.T, h *scHandle)) {
 			t.Fatalf("connecting to %s: %v", reader, err)
 		}
 		defer func() {
-			if err := h.Close(); err != nil {
+			err := h.Close()
+			if err != nil {
 				t.Errorf("disconnecting from handle: %v", err)
 			}
 		}()
